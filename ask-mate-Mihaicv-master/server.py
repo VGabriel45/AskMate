@@ -34,9 +34,9 @@ def add_question():
 
 @app.route('/question/<id>', methods=['GET', 'POST'])
 def show_question(id):
-    question = data_manager.find_question(id)
-
-    return render_template('question.html', question=question)
+    if request.method == "GET":
+        question = data_manager.find_question(id)
+        return render_template('question.html', question=question)
 
 
 @app.route('/question/<question_id>/edit', methods=['GET', 'POST'])

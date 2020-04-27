@@ -11,7 +11,6 @@ DATA_HEADER_ANSWER = ['id', 'submission_time',
 DATA_HEADER_QUESTIONS = ['id', 'submission_time',
                          'view_number', 'vote_number', 'title', 'message', 'image']
 
-
 def get_data(data_id=None):
 
     csv_dict_list = []
@@ -19,6 +18,7 @@ def get_data(data_id=None):
         csv_reader = csv.DictReader(csv_file)
         for row in csv_reader:
             csv_dict_list.append(row)
+
 
     if data_id is not None:
         for dictionary in csv_dict_list:
@@ -34,6 +34,7 @@ def find_question(id):
     for question in questions_list:
         if question['id'] == id:
             return question
+
 
 
 def add_in_csv(new_data):

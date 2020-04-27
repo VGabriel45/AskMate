@@ -1,23 +1,18 @@
-{% extends 'index.html' %}
-{% block all_questions %}
-
-<body>
-
-    <table>
-        <tr style="color: mediumblue">
-            {% for item in tabel_header_questions %}
-            {%if item=='Id'%}
-            {{ '' }}
-            {%else%}
-            <th>{{ item }}</th>
-            {% endif %}
-            {% endfor %}
-        </tr>
+{% extends 'layout.html' %}
+{% block head %}
+<title>All questions</title>
+{% endblock %}
 
 
+{%  block body%}
+<div class="container mt-5">
+    <table class="table">
+        <thead class="thead-dark">
+            {% for header in tabel_header_questions %}<th> {{ header }} </th>{% endfor %}
+        </thead>
+
+        {% for question in questions_list %}
         <tr>
-
-            {% for question in questions_list %}
             <td> {{ question['id'] }}</td>
             <td> {{ question['submission_time'] }}</td>
             <td> {{ question['view_number'] }}</td>
@@ -25,14 +20,10 @@
             <td><a href="/question/{{ question['id'] }}">{{ question['title'] }}</a></td>
             <td> {{ question['message'] }}</td>
             <td> <img src="{{ question['image'] }}" height="80"></td>
-
-
         </tr>
         {% endfor %}
     </table>
 
     <button><a href="/add_new_question">Add new question</a></button>
-</body>
-
-
+</div>
 {% endblock %}
