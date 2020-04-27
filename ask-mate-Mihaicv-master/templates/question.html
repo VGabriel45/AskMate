@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% block question %}
+<body>
+<br>
+<br>
+ <table>
+     <tr>
+     <th>Title</th>
+          <th></th><th></th><th></th><th> <th></th><th></th><th></th><th>
+     <th>Mesage</th>
+          <th></th><th></th><th></th><th> <th></th><th></th><th></th><th>
+     <th>Image</th>
+     </tr>
+
+     <th>{{ question['title'] }}</th>
+     <th></th><th></th><th></th><th> <th></th><th></th><th></th><th>
+     <th>{{ question['message'] }}</th>
+      <th></th><th></th><th></th><th> <th></th><th></th><th></th><th>
+     <th><img src="{{ question['image'] }}" height="100"></th><br><br><br>
+
+
+
+</table>
+
+<button type="button"><a href="/question/{{question['id']}}/edit"> Edit question</a></button>
+<button type="button"><a href="/question/{{question['id']}}/delete"> Delete question</a></button><br><br><br><br>
+
+<div><h3>Answers</h3></div>
+<button type="button"><a href="/question/{{question['id']}}/edit"> Add answer</a></button>
+
+</body>
+</html>
+
+
+{% endblock %}

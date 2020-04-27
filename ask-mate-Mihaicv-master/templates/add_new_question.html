@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block add_new_question %}
+<body>
+    <h2>Add new question</h2>
+    <form action="/add_new_question" method="POST">
+
+        <label for="title">Title</label><br>
+        <input id="title" type="text" name="title"><br><br>
+
+        <label for="message">Message</label><br>
+        <textarea id="message" type="text" name="message" rows="10" cols="40"></textarea><br><br>
+
+        <label for="image">Image</label><br>
+        <input  type="url" id="image" name="image"><br><br><br><br>
+
+        <button type="submit">Add question</button>
+
+    </form>
+
+
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% block all_questions %}
+
+<body>
+
+    <table>
+        <tr style="color: mediumblue">
+            {% for item in tabel_header_questions %}
+            {%if item=='Id'%}
+            {{ '' }}
+            {%else%}
+            <th>{{ item }}</th>
+            {% endif %}
+            {% endfor %}
+        </tr>
+
+
+        <tr>
+
+            {% for question in questions_list %}
+            <td> {{ question['id'] }}</td>
+            <td> {{ question['submission_time'] }}</td>
+            <td> {{ question['view_number'] }}</td>
+            <td> {{ question['vote_number'] }}</td>
+            <td><a href="/question/{{ question['id'] }}">{{ question['title'] }}</a></td>
+            <td> {{ question['message'] }}</td>
+            <td> <img src="{{ question['image'] }}" height="80"></td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+
+    <button><a href="/add_new_question">Add new question</a></button>
+</body>
+
+
+{% endblock %}

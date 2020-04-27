@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block  edit %}
+
+
+<body>
+   <form action="/question/{{ id }}/edit" method="POST">
+       <label for="title">Title</label><br>
+       <input id="title" type="text" name="title" value="{{ question['title'] }}"><br><br>
+
+       <label for="message">Message</label><br>
+       <textarea id="message"  name="message" rows="10" cols="30">{{ question['message'] }}"</textarea><br><br>
+
+        <label for="image">Add Image</label><br>
+       <input id="image" type="url" name="image" value="{{ question['image'] }}"><br><br>
+       <button type="submit">Update question</button>
+   </form>
+
+
+</body>
+
+
+{% endblock %}
