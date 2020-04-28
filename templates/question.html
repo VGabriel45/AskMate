@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            {% for header in headers %}
+                <th>
+                    {{ header }}
+                </th>
+            {% endfor %}
+            </tr>
+        <tr>
+            {% for key, value in question.items() %}
+            <td>
+                {% if key == 'title' %}
+                <a href="question/{{ question['id'] }}">{{value}}</a>
+                {% elif key == 'image' %}
+                <img src="{{value}}" alt="placehd">
+                {%else%}
+                {{value}}
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+    
+    <button> <a href="/list">HOME</a> </button>
+    <button> <a href="/question/{{question['id']}}/delete"> DELETE QUESTION </a> </button>
+
+    </table>
+    <ol>
+        {%for item in answer%}    
+        <li>
+            {{item['message']}}   {{item['vote_number']}} 
+            <button> <a href="/answer/{{item['id']}}/vote_up">VOTE UP</a></button>
+            <button> <a href="/answer/{{item['id']}}/vote_down">VOTE DOWN</a></button>
+            <button> <a href="/answer/{{item['id']}}/delete"> DELETE Answer </a> </button>
+        </li>
+        
+        {%endfor%}
+    </ol>
+
+    <button> <a href="/question/{{question['id']}}/vote_up">VOTE UP</a></button>
+    <button> <a href="/question/{{question['id']}}/vote_down">VOTE DOWN</a></button>
+    </body>
+</html>
