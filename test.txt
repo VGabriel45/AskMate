@@ -1,0 +1,49 @@
+<div class="container-fluid">
+        <form action="/list" method="POST">
+            <label for="sort">Sort by:</label><br>
+            <select id="sort" name="sort">
+                <option value="2">View Number</option>
+                <option value="1">Submission Time</option>
+                <option value="4">Title</option>
+                <option value="3">Vote Number</option>
+            </select>
+            <br>
+            <label for="direction">Direction</label><br>
+            <select name="direction">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+            <button type="submit">Ok</button>
+        </form>
+        <br><br>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    {% for header in headers %}
+                    <th>
+                        {{ header }}
+                    </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+
+            {% for row in sorted_list %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td><a href="/question/{{row[0]}}">{{row[4]}}</a></td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <a href="/add-question">Add question</a>
+
+    
+
+
+    

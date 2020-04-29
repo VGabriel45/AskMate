@@ -1,20 +1,43 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends 'layout.html' %}
 
-<h2>HTML Forms</h2>
+{% block head %}
+<title>Add Question</title>
+{% endblock %}
 
-<form action="/add-question", method="POST">
-  <label for="title">Title:</label><br>
-  <input type="text" name="title" placeholder="title"><br>
-  <label for="message">Question:</label><br>
-  <textarea type="text" name="message"></textarea><br><br>
-  <label for="image">Image URL</label><br>
-  <input type="url" name="image"><br><br>
-  <input type="submit" value="Submit">
-</form> 
+{% block body %}
+<div class="container jumbotron mt-5">
+  <div class="ml-3">
+    <a href="/list">Home page</a>
+  </div>
+  <div class="mt-3 d-flex justify-content-center">
+    <h2>Add question</h2>
+  </div>
+  <form action="/add-question" , method="POST">
+    <div class="container">
+      <div class="form-group">
+        <label for="title">Title:</label><br>
+        <input type="text" name="title" placeholder="title" class="form-control"><br>
+      </div>
+      <div>
+        <label for="message">Question:</label><br>
+        <textarea type="text" name="message" class="form-control"></textarea><br><br>
+      </div>
+      <div class="form-group">
+        <label for="image">Image URL:</label><br>
+        <input type="url" name="image" class="form-control"><br><br>
+      </div>
+      <div class="form-group">
+        <label for="img">Select image:</label>
+        <br>
+        <input type="file" id="img" name="img" accept="image/*">
+      </div>
+      <hr>
+      <div class="mt-3 d-flex justify-content-center">
+        <button type="submit" class="btn btn-outline-primary">Add question</button>
+      </div>
 
+    </div>
 
-
-</body>
-</html>
+  </form>
+</div>
+{% endblock %}
