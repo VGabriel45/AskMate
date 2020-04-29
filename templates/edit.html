@@ -19,21 +19,21 @@
                 <input type="text" name="title" placeholder="title" class="form-control" value="{{question['title']}}""><br>
                 </div>
                 <div>
-                    <label for="message">Question:</label><br>
-                    <textarea type="text" name="message" class="form-control">{{question['message']}}</textarea><br><br>
-                </div>
-                <div class="form-group">
-                    <label for="image">Image URL:</label><br>
-                    <input type="url" name="image" class="form-control" value="{{question['image']}}"><br><br>
-                </div>
-                <div class="form-group">
-                    <label for="img">Select image:</label>
-                    <br>
-                    <input type="file" id="img" name="img" accept="image/*">
-                </div>
-                <hr>
-                <div class="mt-4 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-primary">Add question</button>
+                    <label for=" message">Question:</label><br>
+                <textarea type="text" name="message" class="form-control">{{question['message']}}</textarea><br><br>
+            </div>
+            <div class="form-group">
+                <label for="image">Image URL:</label><br>
+                <input type="url" name="image" class="form-control" value="{{question['image']}}"><br><br>
+            </div>
+            <div class="form-group">
+                <label for="img">Select image:</label>
+                <br>
+                <input type="file" id="img" name="img" accept="image/*">
+            </div>
+            <hr>
+            <div class="mt-4 d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-primary">Edit question</button>
             </div>
 
         </div>
