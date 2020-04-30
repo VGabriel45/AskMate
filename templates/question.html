@@ -42,10 +42,8 @@
         <div>
             <img src=" {{ item['image'] }}" style="width:50px">
         </div>
-        <div>
-            <p>{{item['vote_number']}}</p>
-        </div>
         {% endif %}
+            <p>Number of votes:{{item['vote_number']}}</p>
         <br><br>
         <a href="/answer/{{item['id']}}/vote_up" class="btn btn-primary btn-sm">VOTE UP</a>
         <a href="/answer/{{item['id']}}/vote_down" class="btn btn-primary btn-sm">VOTE DOWN</a>

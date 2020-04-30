@@ -82,9 +82,9 @@ def find_answers(filename, id):
     return answers_list
 
 
-def generate_id():
+def generate_id(filename):
     max_id = 0
-    for row in get_data('question.csv'):
+    for row in get_data(filename):
         if int(row['id']) > max_id:
             max_id = int(row['id'])
     return max_id + 1

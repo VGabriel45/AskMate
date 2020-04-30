@@ -35,7 +35,7 @@ def display_question(question_id):
 @app.route('/add-question', methods=['POST', 'GET'])
 def add_question():
     if request.method == 'POST':
-        id = data_manager.generate_id()
+        id = data_manager.generate_id('question.csv')
         submission_time = datetime.now().date()
         view_number = 0
         vote_number = 0
@@ -54,7 +54,7 @@ def add_question():
 def add_answer(question_id):
     question = data_manager.find_question('question.csv', question_id)
     if request.method == 'POST':
-        id = data_manager.generate_id()
+        id = data_manager.generate_id('answer.csv')
         submission_time = datetime.now().date()
         vote_number = 0
         message = request.form.get('message')
