@@ -10,7 +10,9 @@
   <div class="ml-3 mt-3 d-flex justify-content-center">
     <h2>Add new answer</h2>
   </div>
-  <form action="/question/{{question['id']}}/new-answer" , method="POST">
+    {% for question in questions %}
+  <form action="/question/{{ question.id }}/new-answer" , method="POST">
+      {% endfor %}
     <div class="container">
       <div>
         <label for="message">Answer:</label><br>

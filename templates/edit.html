@@ -12,19 +12,20 @@
     <div class="mt-3 d-flex justify-content-center">
         <h2>Add question</h2>
     </div>
-    <form action="/question/{{question['id']}}/edit" , method="POST">
+    {% for question in questions %}
+    <form action="/question/{{ question.id }}/edit" , method="POST">
         <div class="container">
             <div class="form-group">
                 <label for="title">Title:</label><br>
-                <input type="text" name="title" placeholder="title" class="form-control" value="{{question['title']}}""><br>
+                <input type="text" name="title" placeholder="title" class="form-control" value="{{ question.title }}"><br>
                 </div>
                 <div>
                     <label for=" message">Question:</label><br>
-                <textarea type="text" name="message" class="form-control">{{question['message']}}</textarea><br><br>
+                <textarea type="text" name="message" class="form-control">{{question.message}}</textarea><br><br>
             </div>
             <div class="form-group">
                 <label for="image">Image URL:</label><br>
-                <input type="url" name="image" class="form-control" value="{{question['image']}}"><br><br>
+                <input type="url" name="image" class="form-control" value="{{question.image}}"><br><br>
             </div>
             <div class="form-group">
                 <label for="img">Select image:</label>
@@ -39,5 +40,6 @@
         </div>
 
     </form>
+    {% endfor %}
 </div>
 {% endblock %}

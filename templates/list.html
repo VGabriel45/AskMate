@@ -31,26 +31,24 @@
     <div class="jumbotron mt-4">
         <table class="table">
             <thead class="thead-dark">
-                {% for header in headers %}
-                <th>
-                    {{ header }}
-                </th>
-                {% endfor %}
+                <th>Submission Time</th>
+                <th>View Number</th>
+                <th>Vote Number</th>
+                <th>Title</th>
+                <th>Message</th>
+                <th>Image</th>
             </thead>
             {% for question in data %}
-            <tr>
-                {% for key, value in question.items() %}
-                <td>
-                    {% if key == 'title' %}
-                    <a href="question/{{ question['id'] }}">{{value}}</a>
-                    {% elif key == 'image' %}
-                    <img src="{{value}}" alt="placehd" style="width: 80%;">
-                    {%else%}
-                    {{value}}
-                    {% endif %}
-                </td>
-                {% endfor %}
-            </tr>
+            <tbody>
+                <tr>
+                    <td>{{ question.submission_time }}</td>
+                    <td>{{ question.view_number }}</td>
+                    <td>{{ question.vote_number }}</td>
+                    <td><a href="/question/{{ question.id }}">{{ question.title }}</a></td>
+                    <td class="col">{{ question.message }}</td>
+                    <td class="col">{{ question.image }}</td>
+                </tr>
+            </tbody>
             {% endfor %}
         </table>
         <hr>

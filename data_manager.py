@@ -1,98 +1,166 @@
-import csv
-import os
-import operator
+from typing import List, Dict
 
-data_headers = ['id', 'submission_time', 'view_number',
-                'vote_number', 'title', 'message', 'image']
-data_headers_answers = ['id', 'submission_time',
-                        'vote_number', 'question_id', 'message', 'image']
+from psycopg2 import sql
+from psycopg2.extras import RealDictCursor
 
+import database_common
 
-def get_data(filename, data_id=None):
-
-    csv_dict_list = []
-    with open(filename, encoding='utf-8') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-        for row in csv_reader:
-            csv_dict_list.append(row)
-
-    if data_id is not None:
-        for dictionary in csv_dict_list:
-            if dictionary['id'] == str(data_id):
-
-                return dictionary
-
-    return csv_dict_list
+@database_common.connection_handler
+def get_data(cursor: RealDictCursor) -> list:
+    query = """
+            SELECT *
+            FROM question
+            ORDER BY id"""
+    cursor.execute(query)
+    return cursor.fetchall()
 
 
-def reverse_list(my_list):
-    return reversed(my_list)
+@database_common.connection_handler
+def reverse_list(cursor: RealDictCursor) -> list:
+    query = """
+               SELECT *
+               FROM question
+               ORDER BY id DESC"""
+    cursor.execute(query)
+    return cursor.fetchall()
 
 
-def add_in_csv(filename, new_data, fieldnames):
-
-    with open(filename, 'a', newline='', encoding='utf-8') as csv_file:
-        csv_writer = csv.DictWriter(csv_file, fieldnames)
-        csv_writer.writerow(new_data)
-    return 'Submitted successful'
-
-
-def update_on_csv(filename, question_id, update_dict, fieldnames):
-
-    list_of_all = get_data(filename)
-
-    with open(filename, 'w', newline='', encoding='utf-8') as csv_file:
-        csv_writer = csv.DictWriter(csv_file, fieldnames)
-        csv_writer.writeheader()
-        for row in list_of_all:
-            if row['id'] == question_id:
-                row = update_dict
-            csv_writer.writerow(row)
-
-    return "update succesfull"
+@database_common.connection_handler
+def add_question_in_csv(cursor: RealDictCursor,submission_time, view_number, vote_number, title, message, image) -> list:
+    query = """
+    INSERT INTO question (submission_time, view_number, vote_number, title, message, image)
+    VALUES (%s, %s, %s, %s, %s, %s);
+    """
+    cursor.execute(query, (submission_time, view_number, vote_number, title, message, image,))
 
 
-def delete_on_csv(filename, delete_id, fieldnames):
-
-    list_of_all = get_data(filename)
-
-    with open(filename, 'w', newline='', encoding='utf-8') as csv_file:
-        csv_writer = csv.DictWriter(csv_file, fieldnames)
-        csv_writer.writeheader()
-        for row in range(len(list_of_all)-1):
-            if list_of_all[row]['id'] == delete_id:
-                del list_of_all[row]
-            csv_writer.writerow(list_of_all[row])
-    return "delete succesfull"
+@database_common.connection_handler
+def add_answer_in_csv(cursor: RealDictCursor,submission_time, vote_number, message, question_id, image) -> list:
+    query = """
+    INSERT INTO answer (submission_time, vote_number, message, question_id, image)
+    VALUES (%s, %s, %s, %s, %s);
+    """
+    cursor.execute(query, (submission_time, vote_number, message, question_id, image,))
 
 
-def find_question(filename, id):
-    questions_list = get_data(filename)
-    for question in questions_list:
-        if question['id'] == str(id):
-            return question
+@database_common.connection_handler
+def update_on_csv(cursor: RealDictCursor, title, message, image, id) -> list:
+    query = """
+        UPDATE question
+        SET title = %s , message = %s , image = %s
+        WHERE id = %s;
+        """
+    cursor.execute(query, (title, message, image, id,))
 
 
-def find_answers(filename, id):
-    answers_list = []
-    answers = get_data(filename)
-    for answer in answers:
-        if answer['question_id'] == str(id):
-            answers_list.append(answer)
-    return answers_list
+@database_common.connection_handler
+def view_up_answer(cursor: RealDictCursor, id) -> list:
+    query = """
+        UPDATE question
+        SET view_number = view_number + 1
+        WHERE id = %s;
+        """
+    cursor.execute(query, (id,))
 
 
-def generate_id(filename):
-    max_id = 0
-    for row in get_data(filename):
-        if int(row['id']) > max_id:
-            max_id = int(row['id'])
-    return max_id + 1
+@database_common.connection_handler
+def get_vote_number(cursor: RealDictCursor, id) -> list:
+    query = """
+        SELECT vote_number FROM question WHERE id = %s;
+        """
+    cursor.execute(query, (id,))
+    return cursor.fetchall()
 
 
-def sort_csv(filename, key, direction):
-    data = get_data(filename)
-    return sorted(data, key=lambda i: i[key], reverse=direction)
+@database_common.connection_handler
+def vote_up_question(cursor: RealDictCursor, id) -> list:
+    query = """
+        UPDATE question
+        SET vote_number = vote_number + 1
+        WHERE id = %s;
+        """
+    cursor.execute(query, (id,))
+
+
+@database_common.connection_handler
+def vote_down_question(cursor: RealDictCursor, id) -> list:
+    query = """
+        UPDATE question
+        SET vote_number = vote_number - 1
+        WHERE id = %s;
+        """
+    cursor.execute(query, (id,))
+
+
+@database_common.connection_handler
+def vote_up_answer(cursor: RealDictCursor, id) -> list:
+    query = """
+        UPDATE answer
+        SET vote_number = vote_number + 1
+        WHERE id = %s;
+        """
+    cursor.execute(query, (id,))
+
+
+@database_common.connection_handler
+def vote_down_answer(cursor: RealDictCursor, id) -> list:
+    query = """
+        UPDATE answer
+        SET vote_number = vote_number - 1
+        WHERE id = %s;
+        """
+    cursor.execute(query, (id,))
+
+
+@database_common.connection_handler
+def delete_question_on_csv(cursor: RealDictCursor, id) -> list:
+    query = """
+            DELETE FROM question WHERE id = %s;
+            """
+    cursor.execute(query, (id,))
+
+
+@database_common.connection_handler
+def delete_answer_on_csv(cursor: RealDictCursor, id) -> list:
+    query = """
+            DELETE FROM answer WHERE id = %s;
+            """
+    cursor.execute(query, (id,))
+
+
+@database_common.connection_handler
+def find_question(cursor: RealDictCursor, id) -> list:
+    query = """
+            SELECT * FROM question WHERE id = %s
+            """
+    cursor.execute(query, (id,))
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def find_answers(cursor: RealDictCursor, id) -> list:
+    query = """
+                SELECT * FROM answer WHERE id = %s
+                """
+    cursor.execute(query, (id,))
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def sort_csv(cursor: RealDictCursor, param) -> list:
+    query = """
+            SELECT * FROM question ORDER BY %s
+            """
+    cursor.execute(query, (param,))
+    return cursor.fetchall()
+
+@database_common.connection_handler
+def find_question_answer(cursor: RealDictCursor, question_id) -> list:
+    query = """
+                SELECT * FROM answer WHERE question_id = %s
+                """
+    cursor.execute(query, (question_id,))
+    return cursor.fetchall()
 
 
 
