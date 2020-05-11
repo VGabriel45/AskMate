@@ -10,7 +10,8 @@ app = Flask(__name__)
 def list_questions():
     if request.method == "POST":
         sort_by = request.form.get('sort')
-        data = data_manager.sort_csv(sort_by)
+        direction = request.form.get('direction')
+        data = data_manager.sort_csv(sort_by, direction)
     else:
         data = data_manager.get_data()
     return render_template('list.html', data=data)

@@ -147,11 +147,11 @@ def find_answers(cursor: RealDictCursor, id) -> list:
 
 
 @database_common.connection_handler
-def sort_csv(cursor: RealDictCursor, param) -> list:
+def sort_csv(cursor: RealDictCursor, param, direction) -> list:
     query = """
-            SELECT * FROM question ORDER BY %s
-            """
-    cursor.execute(query, (param,))
+            SELECT * FROM question ORDER BY {} {}
+            """.format(param, direction)
+    cursor.execute(query)
     return cursor.fetchall()
 
 @database_common.connection_handler
