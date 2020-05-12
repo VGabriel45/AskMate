@@ -46,7 +46,7 @@
                     <td>{{ question.vote_number }}</td>
                     <td><a href="/question/{{ question.id }}">{{ question.title }}</a></td>
                     <td class="col">{{ question.message }}</td>
-                    <td class="col">{{ question.image }}</td>
+                    <td class="col"><img src="{{ question.image }}" style="width: 150px"></td>
                 </tr>
             </tbody>
             {% endfor %}

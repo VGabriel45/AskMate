@@ -21,9 +21,13 @@ def list_questions():
 def display_question(question_id):
     if request.method == 'GET':
         data_manager.view_up_answer(question_id)
+    answer_id = data_manager.find_id_question_answer(question_id)
+    answer_id = int(answer_id['id'])
+    question_comments = data_manager.get_question_comment(question_id)
+    answer_comments = data_manager.get_answer_comment(answer_id)
     questions = data_manager.find_question(question_id)
     answers = data_manager.find_question_answer(question_id)
-    return render_template('question.html', questions=questions, answers=answers)
+    return render_template('question.html', questions=questions, answers=answers, question_comments=question_comments, answer_comments=answer_comments)
 
 
 @app.route('/add-question', methods=['POST', 'GET'])
@@ -52,6 +56,28 @@ def add_answer(question_id):
         data_manager.add_answer_in_csv(submission_time, vote_number, message, question_id, image)
         return redirect('/question/' + str(question_id))
     return render_template('add-answer.html', questions=questions)
+
+
+@app.route('/question/<question_id>/new-comment', methods=['POST', 'GET'])
+def add_question_comment(question_id):
+    questions = data_manager.find_question(question_id)
+    if request.method == 'POST':
+        submission_time = datetime.now().date()
+        message = request.form.get('message')
+        data_manager.add_comment_for_question(question_id, message, submission_time)
+        return redirect('/question/' + str(question_id))
+    return render_template('add_comment.html', questions=questions)
+
+
+@app.route('/answer/<answer_id>/new-comment', methods=['POST', 'GET'])
+def add_answer_comment(answer_id):
+    answers = data_manager.find_answers(answer_id)
+    if request.method == 'POST':
+        submission_time = datetime.now().date()
+        message = request.form.get('message')
+        data_manager.add_comment_for_answer(answer_id, message, submission_time)
+        return redirect('/')
+    return render_template('add_comment_answer.html', answers=answers)
 
 
 @app.route('/question/<question_id>/delete')

@@ -16,6 +16,26 @@ def get_data(cursor: RealDictCursor) -> list:
 
 
 @database_common.connection_handler
+def get_question_comment(cursor: RealDictCursor, id) -> list:
+    query = """
+            SELECT *
+            FROM comment
+            WHERE question_id = %s"""
+    cursor.execute(query, (id,))
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def get_answer_comment(cursor: RealDictCursor, id) -> list:
+    query = """
+            SELECT *
+            FROM comment
+            WHERE answer_id = %s"""
+    cursor.execute(query, (id,))
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
 def reverse_list(cursor: RealDictCursor) -> list:
     query = """
                SELECT *
@@ -41,6 +61,24 @@ def add_answer_in_csv(cursor: RealDictCursor,submission_time, vote_number, messa
     VALUES (%s, %s, %s, %s, %s);
     """
     cursor.execute(query, (submission_time, vote_number, message, question_id, image,))
+
+
+@database_common.connection_handler
+def add_comment_for_question(cursor: RealDictCursor,question_id, message, submission_time) -> list:
+    query = """
+    INSERT INTO comment (question_id, message, submission_time)
+    VALUES (%s, %s, %s);
+    """
+    cursor.execute(query, (question_id ,message, submission_time,))
+
+
+@database_common.connection_handler
+def add_comment_for_answer(cursor: RealDictCursor,answer_id, message, submission_time) -> list:
+    query = """
+    INSERT INTO comment (answer_id, message, submission_time)
+    VALUES (%s, %s, %s);
+    """
+    cursor.execute(query, (answer_id ,message, submission_time,))
 
 
 @database_common.connection_handler
@@ -162,5 +200,10 @@ def find_question_answer(cursor: RealDictCursor, question_id) -> list:
     cursor.execute(query, (question_id,))
     return cursor.fetchall()
 
-
-
+@database_common.connection_handler
+def find_id_question_answer(cursor: RealDictCursor, question_id) -> list:
+    query = """
+                SELECT id FROM answer WHERE question_id = %s
+                """
+    cursor.execute(query, (question_id,))
+    return cursor.fetchone()

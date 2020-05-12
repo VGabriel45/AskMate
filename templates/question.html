@@ -29,10 +29,13 @@
     </div>
 </div>
 <div class="mt-3">
+    {% for answer in answers %}
     <a href="/question/{{question.id}}/new-answer" class="mt-3 btn btn-primary btn-sm"> ADD NEW ANSWER</a>
+    <a href="/answer/{{answer.id}}/new-comment" class="mt-3 btn btn-primary btn-xs"> add answer comment</a>
     <a href="/list" class="mt-3 btn btn-primary btn-sm">Home page</a>
+    {% endfor %}
 </div>
-{% endfor %}
+
 <div class="jumbotron mt-3 container">
     <h2>Answers:</h2>
     {% for answer in answers %}
@@ -40,6 +43,9 @@
         <p>{{ answer.message }}</p>
         Image :{{ answer.image }} <br>
         Votes : {{ answer.vote_number }}
+        Comments :  {% for comment in answer_comments %}
+            {{ comment.message }}
+        {% endfor %}
         <a href="/answer/{{ answer.id }}/delete" class="btn btn-danger">Delete</a>
         <a href="/answer/{{answer.id}}/vote_down" class="mt-4 btn btn-primary btn-sm float-right">VOTE
                     DOWN</a>
@@ -47,6 +53,16 @@
             UP</a>
     {% endfor %}
     </div>
+</div>
+<div class="jumbotron mt-3 container">
+<a href="/question/{{question.id}}/new-comment" class="mt-3 btn btn-primary btn-sm"> ADD NEW COMMENT</a>
+    <h2>Comments:</h2>
+    {% for comment in question_comments %}
+        <hr>
+        <p>{{ comment.message }}</p>
+    {% endfor %}
+    </div>
+    {% endfor %}
 </div>
 
 
