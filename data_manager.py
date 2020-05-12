@@ -46,22 +46,21 @@ def reverse_list(cursor: RealDictCursor) -> list:
 
 
 @database_common.connection_handler
-def add_to_table(cursor: RealDictCursor, table, submission_time, view_number, vote_number, title, message, image) -> list:
-    query = """
-    INSERT INTO %s (submission_time, view_number, vote_number, title, message, image)
-    VALUES (%s, %s, %s, %s, %s, %s);
-    """
-    cursor.execute(query, (table, submission_time, view_number, vote_number, title, message, image,))
-
-
-@database_common.connection_handler
 def add_question_in_csv(cursor: RealDictCursor,submission_time, view_number, vote_number, title, message, image) -> list:
-    add_to_table('question', submission_time, view_number, vote_number, title, message, image)
+    query = """
+        INSERT INTO question (submission_time, view_number, vote_number, title, message, image)
+        VALUES (%s, %s, %s, %s, %s, %s);
+        """
+    cursor.execute(query, (submission_time, view_number, vote_number, title, message,image,))
 
 
 @database_common.connection_handler
 def add_answer_in_csv(cursor: RealDictCursor,submission_time, vote_number, message, question_id, image) -> list:
-    add_to_table('answer', submission_time, view_number, vote_number, title, message, image)
+    query = """
+    INSERT INTO answer (submission_time, vote_number, message, question_id, image)
+    VALUES (%s, %s, %s, %s, %s);
+    """
+    cursor.execute(query, (submission_time, vote_number, message, question_id, image,))
 
 
 @database_common.connection_handler
@@ -208,3 +207,5 @@ def find_id_question_answer(cursor: RealDictCursor, question_id) -> list:
                 """
     cursor.execute(query, (question_id,))
     return cursor.fetchone()
+
+

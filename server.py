@@ -24,13 +24,17 @@ def display_question(question_id):
     if request.method == 'GET':
         data_manager.view_up_answer(question_id)
     answer_id = data_manager.find_id_question_answer(question_id)
-    answer_id = int(answer_id['id'])
+    try:
+        answer_id = int(answer_id['id'])
+    except:
+        print('no id')
+    print(answer_id)
     question_comments = data_manager.get_question_comment(question_id)
     answer_comments = data_manager.get_answer_comment(answer_id)
+    print(answer_comments)
     questions = data_manager.find_question(question_id)
     answers = data_manager.find_question_answer(question_id)
-    answers = [x for x in answers if x['id'] == question_id]
-    return render_template('question.html', questions=questions, answers=answers, question_comments=question_comments, answer_comments=answer_comments)
+    return render_template('question.html', questions=questions, answers=answers, question_comments=question_comments, answer_comments=answer_comments, answer_id=answer_id)
 
 
 @app.route('/add-question', methods=['POST', 'GET'])
