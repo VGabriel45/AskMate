@@ -29,6 +29,7 @@ def display_question(question_id):
     answer_comments = data_manager.get_answer_comment(answer_id)
     questions = data_manager.find_question(question_id)
     answers = data_manager.find_question_answer(question_id)
+    answers = [x for x in answers if x['id'] == question_id]
     return render_template('question.html', questions=questions, answers=answers, question_comments=question_comments, answer_comments=answer_comments)
 
 
