@@ -8,13 +8,15 @@ app = Flask(__name__)
 @app.route('/')
 @app.route("/list", methods=['GET', 'POST'])
 def list_questions():
+    sort_by = ''
+    direction = ''
     if request.method == "POST":
         sort_by = request.form.get('sort')
         direction = request.form.get('direction')
         data = data_manager.sort_csv(sort_by, direction)
     else:
         data = data_manager.get_data()
-    return render_template('list.html', data=data)
+    return render_template('list.html', data=data, sort_by=sort_by, direction=direction)
 
 
 @app.route('/question/<question_id>', methods=['POST', 'GET'])
