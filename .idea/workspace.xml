@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29a277bb-7648-45ed-8469-b9b062c7f8a3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/add-tag.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/edit-answer-comment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/edit-answer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/edit-question-comment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/searched-questions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/992bc5b8-c461-4ea3-a39e-8b235aad36e9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/992bc5b8-c461-4ea3-a39e-8b235aad36e9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/992bc5b8-c461-4ea3-a39e-8b235aad36e9/storage_v2/_src_/database/ask_mate_db.Muju3g/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/992bc5b8-c461-4ea3-a39e-8b235aad36e9/storage_v2/_src_/database/ask_mate_db.Muju3g/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/askmatepart2-sample-data_2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/data/askmatepart2-sample-data_2.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add-answer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-answer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add-question.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-question.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_comment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_comment_answer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_comment_answer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/question.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/server.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../exercise/BLogWebsite" />
   </component>
   <component name="RunManager" selected="Python.server">
     <configuration name="ask-mate-florindanciu" type="PythonConfigurationType" factoryName="Python">
@@ -96,7 +113,9 @@
       <workItem from="1589180196158" duration="16063000" />
       <workItem from="1589212134261" duration="870000" />
       <workItem from="1589263852347" duration="8419000" />
-      <workItem from="1589272307134" duration="3298000" />
+      <workItem from="1589272307134" duration="5188000" />
+      <workItem from="1589290273651" duration="686000" />
+      <workItem from="1589351015064" duration="31653000" />
     </task>
     <servers />
   </component>
@@ -108,41 +127,41 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="1102" y="143" width="666" height="819" key="#ask-mate-florindanciu/0.27.1920.1053@0.27.1920.1053" timestamp="1589272316210" />
-    <state x="618" y="205" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589271038188">
+    <state x="618" y="205" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589290278115">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="618" y="205" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1589271038188" />
+    <state x="618" y="205" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1589290278115" />
     <state x="635" y="292" width="309" height="516" key="EnvironmentVariablesDialog" timestamp="1589181423376">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="635" y="292" width="309" height="516" key="EnvironmentVariablesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1589181423376" />
-    <state x="1218" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1589271036346">
+    <state x="1218" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1589381912143">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="1218" y="311" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1589271036346" />
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1589275529165">
+    <state x="1218" y="311" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1589381912143" />
+    <state width="1874" height="264" key="GridCell.Tab.0.bottom" timestamp="1589383936480">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1589275529165" />
-    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1589275529165">
+    <state width="1874" height="264" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1589383936480" />
+    <state width="1874" height="264" key="GridCell.Tab.0.center" timestamp="1589383936480">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1589275529165" />
-    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1589275529165">
+    <state width="1874" height="264" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1589383936480" />
+    <state width="1874" height="264" key="GridCell.Tab.0.left" timestamp="1589383936479">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1589275529165" />
-    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1589275529165">
+    <state width="1874" height="264" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1589383936479" />
+    <state width="1874" height="264" key="GridCell.Tab.0.right" timestamp="1589383936480">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1589275529165" />
-    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1589191748954">
+    <state width="1874" height="264" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1589383936480" />
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1589369667770">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1589191748954" />
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1589369667770" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ask_mate_florindanciu$server.coverage" NAME="server Coverage Results" MODIFIED="1589275529157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ask_mate_florindanciu$server.coverage" NAME="server Coverage Results" MODIFIED="1589383936474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ask_mate_florindanciu$ask_mate_florindanciu.coverage" NAME="server Coverage Results" MODIFIED="1589271061032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

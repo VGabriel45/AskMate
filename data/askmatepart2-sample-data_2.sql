@@ -170,6 +170,15 @@ ALTER TABLE ONLY question_tag
     ADD CONSTRAINT fk_tag_id FOREIGN KEY (tag_id) REFERENCES tag(id);
 
 
+ALTER TABLE ONLY comment
+
+    ADD COLUMN edited_count INT DEFAULT 0;
+
+
+ALTER TABLE ONLY comment
+
+    DROP COLUMN edited_count;
+
 
 INSERT INTO question VALUES (0, '2017-04-28 08:29:00', 29, 7, 'How to make lists in Python?', 'I am totally new to this, any hints?', NULL);
 

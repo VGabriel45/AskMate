@@ -5,67 +5,96 @@
 {% endblock %}
 
 {% block body %}
-
-<div class="mt-4 d-flex justify-content-center">
+<div class="d-flex justify-content-center">
     <div class="card-deck w-75 p-3">
         <div class="card">
             {% for question in questions %}
-            <img src="{{ question.image }}" alt="placehd" style="width:100%;">
+                <a href="/question/{{question.id}}/new-tag" class="mt-3 btn btn-secondary alert alert-dark btn-sm"> ADD QUESTION TAG</a>
+                <div class="btn-group">
+                    {% for tag in question_tags %}
+                    <span class="btn alert-secondary btn-sm mt-2 mr-1 mb-1 ml-1 py-0" id="tag">{{ tag.name }}<a href="/question/{{ question.id }}/tag/{{ tag.tag_id }}/delete"><i id="x-icon" class="fa fa-times float-right"></i></a></span>
+                    {% endfor %}
+                </div>
+            <img src="{{ question.image }}" alt="placehd" class="img-thumbnail">
             <div class="card-body">
                 <h3>{{ question.title }}</h3>
                 <p>{{ question.message}}</p>
-                Views: {{ question.view_number }} <br>
-                Votes: {{ question.vote_number }}
+                <button type="button" class="btn alert alert-info py-0 btn-xs mt-3">
+                    Views <span class="badge badge-light">{{ question.view_number }}</span>
+                </button>
+                <button type="button" class="btn alert alert-info py-0 btn-xs float-right mt-3">
+                    Likes <span class="badge badge-light">{{ question.vote_number }}</span>
+                </button>
             </div>
             <div class="card-footer">
-                <a href="/question/{{question.id}}/delete" class="mt-4 btn btn-danger btn-sm"> DELETE QUESTION </a>
-                <a href="/question/{{question.id}}/edit" class="mt-4 btn btn-primary btn-sm"> EDIT QUESTION</a>
-                <a href="/question/{{question.id}}/vote_down" class="mt-4 btn btn-primary btn-sm float-right">VOTE
-                    DOWN</a>
-                <a href="/question/{{question.id}}/vote_up" class="mt-4 mr-2 btn btn-primary btn-sm float-right">VOTE
-                    UP</a>
+                <a href="/question/{{question.id}}/delete" class="mt-4 btn btn-danger btn-sm"> DELETE </a>
+                <a href="/question/{{question.id}}/edit" class="mt-4 btn btn-primary btn-sm"> EDIT</a>
+                <a href="/question/{{question.id}}/vote_down" class="mt-4 btn btn-danger btn-sm float-right"><i class="fa fa-thumbs-down"></i></a>
+                <a href="/question/{{question.id}}/vote_up" class="mt-4 mr-2 btn btn-primary btn-sm float-right"><i class="fa fa-thumbs-up"></i></a>
             </div>
         </div>
     </div>
+    <div class="jumbotron container" id="comments-jumbotron">
+        <a href="/question/{{question.id}}/new-comment" class="mb-3 btn btn-secondary btn-sm"> ADD COMMENT</a>
+        <h2>Comments:</h2>
+        {% for comment in question_comments %}
+            <hr>
+            <p>{{ comment.message }} <br>
+            <a href="/question/{{ question_id }}/comment/{{ comment.id }}/edit" class="mt-3 btn alert alert-primary btn-xs py-0"> Edit</a>
+            <a href="/question/{{ question_id }}/comment/{{ comment.id }}/delete" class="mt-3 btn alert alert-danger btn-xs py-0"> Delete</a>
+            <button type="button" class="btn alert alert-info py-0 btn-xs float-right mt-3">
+                Edits <span class="badge badge-light">{{ comment.edited_count }}</span>
+            </button>
+        {% endfor %}
+    </div>
 </div>
-<div class="mt-3">
-    <a href="/question/{{question.id}}/new-answer" class="mt-3 btn btn-primary btn-sm"> ADD NEW ANSWER</a>
-    <a href="/list" class="mt-3 btn btn-primary btn-sm">Home page</a>
-</div>
-
 <div class="jumbotron mt-3 container">
+    <div class="mb-3">
+    <a href="/question/{{question.id}}/new-answer" class="btn btn-primary btn-sm"> ADD ANSWER</a>
+    </div>
     <h2>Answers:</h2>
-
     {% for answer in answers %}
+        <div class="mt-4">
+            <br>
+        <small><strong>Answer number {{ answer.id }}</strong></small>
         <hr>
         <p>{{ answer.message }}</p>
-        Image :{{ answer.image }} <br>
-        Votes : {{ answer.vote_number }} <br>
-        Comments :
-            {% for comment in answer_comments %}
-                {% if answer.id == comment.answer_id %}
-                {{ comment.message }} with {{ comment.answer_id }} <br>
+        <div class="container">
+            <label class="float-right">Larger Picture</label>
+              <input type="checkbox" class="zoomCheck float-right mt-1 mr-2">
+              <label for="zoomCheck">
+                <img src="{{ answer.image }}" alt="placehd" class="custom-image">
+              </label>
+            <button type="button" class="btn alert alert-info py-0 btn-xs float-right mb-5">
+                Likes <span class="badge badge-light">{{ answer.vote_number }}</span>
+            </button>
+        </div> <br>
+        <div>
+            <hr>
+            <h4>Comments: </h4> <br>
+            {% for comment in comments %}
+                {% if comment.answer_id == answer.id %}
+                    {{ comment.message }} <br>
+                    <a href="/question/{{ question_id }}/answer/{{ answer.id }}/comment/{{ comment.id }}/edit" class="mt-3 btn alert alert-primary btn-sm py-0"> Edit</a>
+                    <a href="/question/{{ question_id }}/answer/{{ answer.id }}/comment/{{ comment.id }}/delete" class="mt-3 btn alert alert-danger btn-sm py-0"> Delete</a>
+                    <button type="button" class="btn alert alert-info py-0 btn-xs float-right mt-3">
+                        Edits <span class="badge badge-light">{{ comment.edited_count }}</span>
+                    </button> <br>
                 {% endif %}
-            {% endfor %}
-        <a href="/answer/{{ answer.id }}/delete" class="btn btn-danger">Delete</a>
-        <a href="/answer/{{ answer.id }}/new-comment" class="mt-3 btn btn-primary btn-xs"> add answer comment</a>
-        <a href="/answer/{{answer.id}}/vote_down" class="mt-4 btn btn-primary btn-sm float-right">VOTE
-                    DOWN</a>
-        <a href="/answer/{{answer.id}}/vote_up" class="mt-4 mr-2 btn btn-primary btn-sm float-right">VOTE
-            UP</a>
+        </div>
+    {% endfor %}
+        </div>
+         <br>
+        <a href="/question/{{ question_id }}/answer/{{ answer.id }}/edit" class="mt-3 btn btn-primary btn-xs"> Edit answer</a>
+        <a href="/question/{{ question_id }}/answer/{{ answer.id }}/delete" class="btn  mt-3 btn-danger">Delete answer</a>
+        <a href="/question/{{ question_id }}/answer/{{ answer.id }}/new-comment" class="mt-3 btn btn-primary btn-xs"> Add comment</a>
+        <a href="/answer/{{answer.id}}/vote_down" class="mt-4 btn btn-danger btn-sm float-right"><i class="fa fa-thumbs-down"></i></a>
+        <a href="/answer/{{answer.id}}/vote_up" class="mt-4 mr-2 btn btn-primary btn-sm float-right "><i class="fa fa-thumbs-up"></i></a>
     {% endfor %}
     </div>
 </div>
-<div class="jumbotron mt-3 container">
-<a href="/question/{{question.id}}/new-comment" class="mt-3 btn btn-primary btn-sm"> ADD NEW COMMENT</a>
-    <h2>Comments:</h2>
-    {% for comment in question_comments %}
-        <hr>
-        <p>{{ comment.message }}</p>
-    {% endfor %}
-    </div>
-    {% endfor %}
 </div>
+{% endfor %}
 
 
 {% endblock %}

@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.18">
     <root id="1">
       <ServerVersion>10.12</ServerVersion>
-      <StartupTime>1589261776</StartupTime>
+      <StartupTime>1589348532</StartupTime>
     </root>
     <database id="2" parent="1" name="Gabi">
       <ObjectId>16389</ObjectId>
@@ -12,7 +12,7 @@
     <database id="3" parent="1" name="ask_mate_db">
       <ObjectId>16661</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1029</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1794</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|16662|16664|1
 sequence|table|16671|16673|1
@@ -105,7 +105,7 @@ sequence|table|16692|16694|1
       <Comment>standard public schema</Comment>
       <StateNumber>351</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1030</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1795</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="20" parent="3" name="btree">
@@ -208,7 +208,7 @@ sequence|table|16692|16694|1
     <table id="36" parent="19" name="comment">
       <ObjectId>16682</ObjectId>
       <Owner>ask-mate</Owner>
-      <StateNumber>819</StateNumber>
+      <StateNumber>1793</StateNumber>
     </table>
     <table id="37" parent="19" name="question">
       <ObjectId>16664</ObjectId>
@@ -322,14 +322,15 @@ sequence|table|16692|16694|1
       <TypeId>1114</TypeId>
     </column>
     <column id="54" parent="36" name="edited_count">
-      <Position>6</Position>
+      <Position>8</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>780</StateNumber>
+      <StateNumber>1793</StateNumber>
+      <DefaultExpression>0</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <index id="55" parent="36" name="pk_comment_id">
       <ObjectId>16703</ObjectId>
-      <StateNumber>784</StateNumber>
+      <StateNumber>1793</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>

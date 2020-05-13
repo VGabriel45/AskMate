@@ -14,6 +14,23 @@ def get_data(cursor: RealDictCursor) -> list:
     cursor.execute(query)
     return cursor.fetchall()
 
+@database_common.connection_handler
+def get_question_tags(cursor: RealDictCursor, question_id) -> list:
+    query = """
+            SELECT * FROM tag JOIN question_tag ON question_tag.tag_id = tag.id JOIN question ON question_tag.question_id = question.id WHERE question_tag.question_id = %s"""
+    cursor.execute(query, (question_id,))
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def get_latest_questions(cursor: RealDictCursor) -> list:
+    query = """
+            SELECT *
+            FROM question
+            ORDER BY submission_time DESC FETCH first 5 rows only """
+    cursor.execute(query)
+    return cursor.fetchall()
+
 
 @database_common.connection_handler
 def get_question_comment(cursor: RealDictCursor, id) -> list:
@@ -64,6 +81,24 @@ def add_answer_in_csv(cursor: RealDictCursor,submission_time, vote_number, messa
 
 
 @database_common.connection_handler
+def add_tag_in_csv(cursor: RealDictCursor, name) -> list:
+    query = """
+    INSERT INTO tag (name)
+    VALUES (%s);
+    """
+    cursor.execute(query, (name,))
+
+
+@database_common.connection_handler
+def add_tag_in_question_tag(cursor: RealDictCursor, question_id, tag_id) -> list:
+    query = """
+    INSERT INTO question_tag (question_id, tag_id)
+    VALUES (%s, %s);
+    """
+    cursor.execute(query, (question_id, tag_id,))
+
+
+@database_common.connection_handler
 def add_comment_for_question(cursor: RealDictCursor,question_id, message, submission_time) -> list:
     query = """
     INSERT INTO comment (question_id, message, submission_time)
@@ -82,7 +117,7 @@ def add_comment_for_answer(cursor: RealDictCursor,answer_id, message, submission
 
 
 @database_common.connection_handler
-def update_on_csv(cursor: RealDictCursor, title, message, image, id) -> list:
+def update_question_on_csv(cursor: RealDictCursor, title, message, image, id) -> list:
     query = """
         UPDATE question
         SET title = %s , message = %s , image = %s
@@ -92,10 +127,41 @@ def update_on_csv(cursor: RealDictCursor, title, message, image, id) -> list:
 
 
 @database_common.connection_handler
+def update_answer_on_csv(cursor: RealDictCursor, message, image, id) -> list:
+    query = """
+        UPDATE answer
+        SET message = %s , image = %s
+        WHERE id = %s;
+        """
+    cursor.execute(query, ( message, image, id,))
+
+
+@database_common.connection_handler
+def update_comment_on_csv(cursor: RealDictCursor, message, id) -> list:
+    query = """
+        UPDATE comment
+        SET message = %s
+        WHERE id = %s;
+        """
+    cursor.execute(query, ( message, id,))
+
+
+@database_common.connection_handler
 def view_up_answer(cursor: RealDictCursor, id) -> list:
     query = """
         UPDATE question
         SET view_number = view_number + 1
+        WHERE id = %s;
+        """
+    cursor.execute(query, (id,))
+
+
+
+@database_common.connection_handler
+def edit_comment_count(cursor: RealDictCursor, id) -> list:
+    query = """
+        UPDATE comment
+        SET edited_count = edited_count + 1
         WHERE id = %s;
         """
     cursor.execute(query, (id,))
@@ -167,6 +233,22 @@ def delete_answer_on_csv(cursor: RealDictCursor, id) -> list:
 
 
 @database_common.connection_handler
+def delete_comment_on_csv(cursor: RealDictCursor, id) -> list:
+    query = """
+            DELETE FROM comment WHERE id = %s;
+            """
+    cursor.execute(query, (id,))
+
+
+@database_common.connection_handler
+def delete_tag_on_csv(cursor: RealDictCursor, id) -> list:
+    query = """
+            DELETE FROM tag WHERE id = %s;
+            """
+    cursor.execute(query, (id,))
+
+
+@database_common.connection_handler
 def find_question(cursor: RealDictCursor, id) -> list:
     query = """
             SELECT * FROM question WHERE id = %s
@@ -206,6 +288,40 @@ def find_id_question_answer(cursor: RealDictCursor, question_id) -> list:
                 SELECT id FROM answer WHERE question_id = %s
                 """
     cursor.execute(query, (question_id,))
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def get_comments(cursor: RealDictCursor) -> list:
+    query = """
+                SELECT * FROM comment ORDER BY submission_time;
+                """
+    cursor.execute(query)
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def get_comment_by_id(cursor: RealDictCursor, id) -> list:
+    query = """
+                SELECT * FROM comment WHERE id = %s
+                """
+    cursor.execute(query, (id,))
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def get_tag_id(cursor: RealDictCursor, name) -> list:
+    query = """
+                SELECT id FROM tag WHERE name = %s
+                """
+    cursor.execute(query, (name,))
     return cursor.fetchone()
 
 
+@database_common.connection_handler
+def search_questions(cursor: RealDictCursor, title) -> list:
+    query = """
+                SELECT * FROM question WHERE title ILIKE '%{}%' OR message ILIKE '%{}%'
+                """.format(title, title)
+    cursor.execute(query)
+    return cursor.fetchall()

@@ -1,4 +1,52 @@
 body {
     background: rgb(53, 51, 54) !important;
 }
+#tag {
+    width: 80px !important;
+    display:inline-block !important;
+}
 
+.card-deck .card {
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+}
+
+.p-3 {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+.navbar {
+    background-color: #86989B !important;
+    border-radius: 5px;
+}
+
+.jumbotron {
+    background-color: white !important;
+}
+
+#comments-jumbotron {
+    margin-bottom: 0 !important;
+}
+
+.custom-image{
+    width: 200px !important;
+}
+
+#x-icon {
+    color: red;
+}
+
+.zoomCheck input[type=checkbox] {
+  display: none !important;
+}
+
+.container img {
+  transition: transform 0.25s ease !important;
+  cursor: zoom-in !important;
+}
+
+input[type=checkbox]:checked ~ label > img {
+  transform: scale(4) !important;
+  cursor: zoom-out !important;
+}

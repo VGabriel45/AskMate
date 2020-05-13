@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>List page</title>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron container mt-5">
+    <div>
+        <h3>Search results:</h3>
+    </div>
+    <div class="jumbotron mt-4">
+        <table class="table">
+            <thead class="thead-dark">
+                <th>Submission Time</th>
+                <th>View Number</th>
+                <th>Vote Number</th>
+                <th>Title</th>
+                <th>Message</th>
+                <th>Image</th>
+            </thead>
+            {% for question in data %}
+            <tbody>
+                <tr>
+                    <td>{{ question.submission_time }}</td>
+                    <td>{{ question.view_number }}</td>
+                    <td>{{ question.vote_number }}</td>
+                    {% if search_by in question.title %}
+                        <td><a href="/question/{{ question.id }}">{{ question.title | replace(search_by ,'<mark>' +  search_by + '</mark>') | safe}}</a></td>
+                    {% else %}
+                        <td><a href="/question/{{ question.id }}">{{ question.title }}</a></td>
+                    {% endif %}
+                    {% if search_by in question.message %}
+                        <td class="col">{{ question.message | replace(search_by ,'<mark>' +  search_by + '</mark>') | safe}}</td>
+                    {% else %}
+                        <td class="col">{{ question.message }}</td>
+                    {% endif %}
+                    <td class="col">{{ question.message }}</td>
+                    <td class="col"><img src="{{ question.image }}" style="width: 150px"></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <hr>
+        <div class="mt-3 d-flex justify-content-center"></div>
+    </div>
+</div>
+</div>
+{% endblock %}
