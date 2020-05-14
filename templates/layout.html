@@ -13,11 +13,8 @@
     {% block head %}
     {% endblock %}
 </head>
-<div class="container">
-
-    <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-        <a class="navbar-brand" href="#"><strong>Ask-Mate</strong></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5" id="navbar">
+        <a class="navbar-brand" href="/"><strong>Ask-Mate</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,7 +23,7 @@
         <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/list" id="home-button">Home page<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/" id="home-button">Home page<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/searched" method="POST">
@@ -36,6 +33,9 @@
             </form>
         </div>
     </nav>
+<div class="container">
+
+    <body>
     {% block body %}
     {% endblock %}
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

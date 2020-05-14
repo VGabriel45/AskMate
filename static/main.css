@@ -1,5 +1,5 @@
 body {
-    background: rgba(58,70,75,0.39);
+    background: #95a5a6;
 }
 #tag {
     width: 80px !important;
@@ -27,9 +27,10 @@ body {
 }
 
 #comments-jumbotron {
+    height: 50%;
     margin-bottom: 0 !important;
     overflow-y: scroll;
-    height: 705px;
+    max-height: 738px;
 }
 
 .custom-image{
@@ -72,10 +73,27 @@ input[type=checkbox]:checked ~ label > img {
     margin-right: 50px;
 }
 
-#scrollable-container{
-    overflow-y: scroll;
-    height: 700px;
+#question-body {
+    overflow-y: auto;
+    max-height: 250px;
 }
+
+#scrollable-container{
+    overflow-y: auto;
+    max-height: 580px;
+}
+
+#comment-container {
+    overflow-y: scroll;
+    max-height: 200px;
+}
+
+#table-container {
+    overflow-y: scroll;
+    height: 600px;
+}
+
+.element::-webkit-scrollbar { width: 0 !important }
 
 mark {
     background-color: yellow !important;
@@ -98,4 +116,13 @@ th {
 
 .navbar-brand{
     text-decoration: underline;
+}
+
+#navbar {
+    padding-left: 400px !important;
+    padding-right: 400px !important;
+}
+
+#question-image {
+    width: 100%px;
 }
