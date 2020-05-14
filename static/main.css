@@ -1,5 +1,5 @@
 body {
-    background: rgb(53, 51, 54) !important;
+    background: rgba(58,70,75,0.39);
 }
 #tag {
     width: 80px !important;
@@ -9,6 +9,7 @@ body {
 .card-deck .card {
     margin-bottom: 0 !important;
     margin-left: 0 !important;
+    background-color: rgba(255,250,241,0.69);
 }
 
 .p-3 {
@@ -17,12 +18,12 @@ body {
 }
 
 .navbar {
-    background-color: #86989B !important;
+    background-color: rgba(0,0,0,0.42) !important;
     border-radius: 5px;
 }
 
 .jumbotron {
-    background-color: white !important;
+    background-color: rgba(253,244,255,0.37) !important;
 }
 
 #comments-jumbotron {
@@ -61,7 +62,7 @@ input[type=checkbox]:checked ~ label > img {
 }
 
 .answer-container {
-    background-color: RGB(152, 180, 212);
+    background-color: rgba(253,244,255,0.46);
     border: 1px solid #444444 !important;
     border-radius: 5px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -82,4 +83,19 @@ mark {
 
 th {
     text-align: center !important;
+}
+
+#home-button {
+  border: none;
+  transition: 0.3s;
+}
+
+#home-button:hover {
+  background-color: rgba(37,255,41,0.2);
+  color: white;
+    border-radius: 10px;
+}
+
+.navbar-brand{
+    text-decoration: underline;
 }
