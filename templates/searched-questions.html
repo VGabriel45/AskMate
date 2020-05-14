@@ -9,22 +9,11 @@
     <div>
         <h3>Search results:</h3>
     </div>
-    <div class="jumbotron mt-4">
-        <table class="table">
-            <thead class="thead-dark">
-                <th>Submission Time</th>
-                <th>View Number</th>
-                <th>Vote Number</th>
-                <th>Title</th>
-                <th>Message</th>
-                <th>Image</th>
-            </thead>
-            {% for question in data %}
-            <tbody>
-                <tr>
-                    <td>{{ question.submission_time }}</td>
-                    <td>{{ question.view_number }}</td>
-                    <td>{{ question.vote_number }}</td>
+    <div class="wrapper mt-5">
+        {% for question in data %}
+        <div class="card item" id="question-grid">
+            <img src="{{ question.image }}" class="table-images">
+            <div class="card-body element" id="question-body" style="max-height: 150px;">
                     {% if search_by in question.title %}
                         <td><a href="/question/{{ question.id }}">{{ question.title | replace(search_by ,'<mark>' +  search_by + '</mark>') | safe}}</a></td>
                     {% else %}
@@ -35,14 +24,13 @@
                     {% else %}
                         <td class="col">{{ question.message }}</td>
                     {% endif %}
-                    <td class="col"><img src="{{ question.image }}" style="width: 150px"></td>
-                </tr>
-            </tbody>
-            {% endfor %}
-        </table>
-        <hr>
-        <div class="mt-3 d-flex justify-content-center"></div>
+            </div>
+            <hr>
+            <div class="ml-1 row">
+                <small>{{ question.submission_time }}</small><small class="ml-5">Votes: {{ question.vote_number }}</small><small>Views: {{ question.view_number }}</small>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-</div>
 </div>
 {% endblock %}

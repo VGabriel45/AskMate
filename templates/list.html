@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="jumbotron container mt-4">
+<div class="jumbotron">
     {% if not searching %}
     <a href="/list">See all questions</a>
     {% else %}
@@ -31,32 +31,20 @@
         </form>
         <a href="/add-question" class="mt-3 btn btn-outline-primary">Add question</a>
     </div>
-    <div class="jumbotron mt-4 element" id="table-container">
-        <table class="table">
-            <thead class="thead-dark">
-                <th>Submission Time</th>
-                <th>View Number</th>
-                <th>Vote Number</th>
-                <th>Title</th>
-                <th>Message</th>
-                <th>Image</th>
-            </thead>
-            {% for question in data %}
-            <tbody>
-                <tr>
-                    <td>{{ question.submission_time }}</td>
-                    <td>{{ question.view_number }}</td>
-                    <td>{{ question.vote_number }}</td>
-                    <td><a href="/question/{{ question.id }}">{{ question.title }}</a></td>
-                    <td class="col">{{ question.message }}</td>
-                    <td><img src="{{ question.image }}" style="width: 150px; "></td>
-                </tr>
-            </tbody>
-            {% endfor %}
-        </table>
-        <hr>
-        <div class="mt-3 d-flex justify-content-center"></div>
+    <div class="wrapper mt-5">
+        {% for question in data %}
+        <div class="card item" id="question-grid">
+            <img src="{{ question.image }}" class="table-images">
+            <div class="card-body element" id="question-body" style="max-height: 150px;">
+                <p><a href="/question/{{ question.id }}">{{ question.title }}</a></p>
+                <p>{{ question.message}}</p>
+            </div>
+            <hr>
+            <div class="ml-1 row">
+                <small>{{ question.submission_time }}</small><small class="ml-5">Votes: {{ question.vote_number }}</small><small class="ml-1">Views: {{ question.view_number }}</small>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-</div>
 </div>
 {% endblock %}

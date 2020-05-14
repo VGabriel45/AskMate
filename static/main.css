@@ -75,7 +75,7 @@ input[type=checkbox]:checked ~ label > img {
 
 #question-body {
     overflow-y: auto;
-    max-height: 250px;
+    height: 320px;
 }
 
 #scrollable-container{
@@ -124,5 +124,28 @@ th {
 }
 
 #question-image {
-    width: 100%px;
+    width: 100%;
+    height: 200px;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.item {
+    padding: 10px;
+    height: 100%;
+}
+
+.table-images {
+    max-height: 150px !important;
+}
+
+#question-grid {
+    background-color: rgba(253,244,255,0.46);
 }
