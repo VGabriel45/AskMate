@@ -27,10 +27,13 @@ body {
 
 #comments-jumbotron {
     margin-bottom: 0 !important;
+    overflow-y: scroll;
+    height: 705px;
 }
 
 .custom-image{
     width: 200px !important;
+    margin-left: 300px !important;
 }
 
 #x-icon {
@@ -49,4 +52,34 @@ body {
 input[type=checkbox]:checked ~ label > img {
   transform: scale(4) !important;
   cursor: zoom-out !important;
+}
+
+#answer-likes {
+    margin-left: 880px;
+    margin-top: -70px;
+    margin-bottom: 0;
+}
+
+.answer-container {
+    background-color: RGB(152, 180, 212);
+    border: 1px solid #444444 !important;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.comment-div {
+    margin-right: 50px;
+}
+
+#scrollable-container{
+    overflow-y: scroll;
+    height: 700px;
+}
+
+mark {
+    background-color: yellow !important;
+}
+
+th {
+    text-align: center !important;
 }
