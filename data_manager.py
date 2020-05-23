@@ -27,7 +27,7 @@ def get_latest_questions(cursor: RealDictCursor) -> list:
     query = """
             SELECT *
             FROM question
-            ORDER BY submission_time DESC FETCH first 5 rows only """
+            ORDER BY id DESC FETCH first 5 rows only """
     cursor.execute(query)
     return cursor.fetchall()
 

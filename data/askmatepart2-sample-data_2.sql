@@ -108,7 +108,40 @@ CREATE TABLE tag (
 );
 
 
+DROP TABLE IF EXISTS public.user;
 
+CREATE TABLE users (
+
+    id serial NOT NULL,
+
+    name text,
+
+    registration_date timestamp without time zone,
+
+    asked_questions integer,
+
+    answers integer,
+
+    comments integer,
+
+    reputation integer
+
+);
+
+
+ALTER TABLE question
+
+    ADD COLUMN user_id integer;
+
+
+ALTER TABLE answer
+
+    ADD COLUMN user_id integer;
+
+
+ALTER TABLE comment
+
+    ADD COLUMN user_id integer;
 
 
 ALTER TABLE ONLY answer

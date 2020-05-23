@@ -1,13 +1,13 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-<title>Add answer</title>
+<title>Add comment</title>
 {% endblock %}
 
 {% block body %}
 <div class="container jumbotron mt-5">
   <div class="ml-3 mt-3 d-flex justify-content-center">
-    <h2>Add new answer</h2>
+    <h2>Add comment</h2>
   </div>
     {% for answer in answers %}
   <form action="/question/{{ question_id }}/answer/{{ answer.id }}/new-comment" , method="POST">

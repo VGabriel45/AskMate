@@ -1,5 +1,7 @@
 body {
-    background: #95a5a6;
+    /*background: #95a5a6;*/
+    background: rgb(164,164,175);
+    background: linear-gradient(90deg, rgba(164,164,175,1) 27%, rgba(159,159,170,0.7231267507002801) 51%, rgba(127,212,230,1) 100%);
 }
 #tag {
     width: 80px !important;
@@ -121,6 +123,8 @@ th {
 #navbar {
     padding-left: 400px !important;
     padding-right: 400px !important;
+    width: 100% !important;
+    z-index: 2;
 }
 
 #question-image {

@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 import data_manager
 from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route('/')
 def latest_questions():
@@ -173,10 +174,14 @@ def delete_tag(question_id, tag_id):
 def add_question_tag(question_id):
     if request.method == 'POST':
         name = request.form.get('tag-name')
-        data_manager.add_tag_in_csv(name)
-        tag_id = data_manager.get_tag_id(name)
-        data_manager.add_tag_in_question_tag(question_id, tag_id['id'])
-        return redirect('/question/' + str(question_id))
+        try:
+            data_manager.add_tag_in_csv(name)
+            tag_id = data_manager.get_tag_id(name)
+            data_manager.add_tag_in_question_tag(question_id, tag_id['id'])
+            return redirect('/question/' + str(question_id))
+        except:
+            flash('Tag already in use')
+            return redirect(request.referrer)
     return render_template('add-tag.html', question_id=question_id)
 
 
