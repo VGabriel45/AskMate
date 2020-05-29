@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29a277bb-7648-45ed-8469-b9b062c7f8a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/992bc5b8-c461-4ea3-a39e-8b235aad36e9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/992bc5b8-c461-4ea3-a39e-8b235aad36e9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/992bc5b8-c461-4ea3-a39e-8b235aad36e9/storage_v2/_src_/database/ask_mate_db.Muju3g/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/992bc5b8-c461-4ea3-a39e-8b235aad36e9/storage_v2/_src_/database/ask_mate_db.Muju3g/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/askmatepart2-sample-data_2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/data/askmatepart2-sample-data_2.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add_comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_comment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add_comment_answer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_comment_answer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +128,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="1102" y="143" width="666" height="819" key="#ask-mate-florindanciu" timestamp="1589272316210">
       <screen x="0" y="27" width="1920" height="1053" />
@@ -154,21 +148,25 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="1218" y="311" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1589788572379" />
-    <state width="1291" height="278" key="GridCell.Tab.0.bottom" timestamp="1590230939534">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1590740210304">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1590740210304" />
     <state width="1291" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1590230939534" />
-    <state width="1291" height="278" key="GridCell.Tab.0.center" timestamp="1590230939534">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1638" height="295" key="GridCell.Tab.0.center" timestamp="1590740210303">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1590740210303" />
     <state width="1291" height="278" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1590230939534" />
-    <state width="1291" height="278" key="GridCell.Tab.0.left" timestamp="1590230939534">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1638" height="295" key="GridCell.Tab.0.left" timestamp="1590740210303">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1590740210303" />
     <state width="1291" height="278" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1590230939534" />
-    <state width="1291" height="278" key="GridCell.Tab.0.right" timestamp="1590230939534">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1638" height="295" key="GridCell.Tab.0.right" timestamp="1590740210304">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1590740210304" />
     <state width="1291" height="278" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1590230939534" />
     <state width="914" height="344" key="GridCell.Tab.1.bottom" timestamp="1590230570919">
       <screen x="0" y="27" width="1920" height="1053" />
@@ -192,7 +190,6 @@
     <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1589456755089" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ask_mate_florindanciu$server.coverage" NAME="server Coverage Results" MODIFIED="1590231093156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ask_mate_florindanciu$ask_mate_florindanciu.coverage" NAME="server Coverage Results" MODIFIED="1589271061032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ask_mate_florindanciu$ask_mate_florindanciu.coverage" NAME="ask-mate-florindanciu Coverage Results" MODIFIED="1590735200242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
